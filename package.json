@@ -1,0 +1,48 @@
+{
+  "name": "hotel-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/app.ts",
+    "start": "npm run clean && tsc && node dist/app",
+    "clean": "rm -rf dist",
+    "build": "tsc -b",
+    "test": "jest --runInBand --detectOpenHandles",
+    "gen-doc": "apidoc i ./ -e node_modules -o documentation/"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "bcrypt": "^4.0.1",
+    "bluechip-utils": "^1.0.2",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "keys-to-camelcase": "^1.0.2",
+    "knex": "^0.21.1",
+    "mailgun-js": "^0.22.0",
+    "nanoid": "^3.1.9",
+    "nanoid-dictionary": "^3.0.0",
+    "pg": "^8.2.1",
+    "uuid": "^8.1.0"
+  },
+  "devDependencies": {
+    "@babel/preset-typescript": "^7.10.1",
+    "@types/bcrypt": "^3.0.0",
+    "@types/cors": "^2.8.6",
+    "@types/express": "^4.17.6",
+    "@types/jest": "^25.2.3",
+    "@types/nanoid": "^2.1.0",
+    "@types/node": "^14.0.11",
+    "jest": "^26.0.1",
+    "nodemon": "^2.0.4",
+    "ts-jest": "^26.1.0",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.5"
+  }
+}
