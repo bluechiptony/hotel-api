@@ -1,7 +1,7 @@
 {
   "name": "hotel-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "Hotel rest service",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon src/app.ts",
@@ -11,13 +11,18 @@
     "test": "jest --runInBand --detectOpenHandles",
     "gen-doc": "apidoc i ./ -e node_modules -o documentation/"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bluechiptony/hotel-api.git"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.19.2",
     "bcrypt": "^4.0.1",
-    "bluechip-utils": "^1.0.2",
+    "bluechip-b54": "^1.0.3",
+    "bluechip-utils": "^1.0.6",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
@@ -26,10 +31,12 @@
     "keys-to-camelcase": "^1.0.2",
     "knex": "^0.21.1",
     "mailgun-js": "^0.22.0",
-    "nanoid": "^3.1.9",
+    "nanoid": "^3.1.10",
     "nanoid-dictionary": "^3.0.0",
     "pg": "^8.2.1",
-    "uuid": "^8.1.0"
+    "redis": "^3.0.2",
+    "uuid": "^8.1.0",
+    "winston": "^3.2.1"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.10.1",
@@ -37,8 +44,10 @@
     "@types/cors": "^2.8.6",
     "@types/express": "^4.17.6",
     "@types/jest": "^25.2.3",
+    "@types/jsonwebtoken": "^8.5.0",
     "@types/nanoid": "^2.1.0",
-    "@types/node": "^14.0.11",
+    "@types/node": "^14.0.13",
+    "@types/redis": "^2.8.22",
     "jest": "^26.0.1",
     "nodemon": "^2.0.4",
     "ts-jest": "^26.1.0",
