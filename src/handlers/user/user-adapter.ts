@@ -4,7 +4,7 @@ import logger from "../../utilities/helpers/logger";
 import { getStatusCodeFromException } from "bluechip-utils/lib/responses/responses";
 import { userGetsAllUsers, systemOrUserCreatesUser } from "./user-use-cases";
 
-import { User } from "bluechip-b54";
+import { User } from "hotel-lib";
 
 export const createUser = async (req: Request, res: Response) => {
   try {
@@ -23,6 +23,7 @@ export const createUser = async (req: Request, res: Response) => {
 export const getUsers = async (req: Request, res: Response) => {
   try {
     let request = BluechipHelpers.adaptExpressRequest(req);
+
     let filterParams = request.queryParams;
     let users: User[] = await userGetsAllUsers(filterParams.pagesize, filterParams.pagenumber, filterParams.order);
     res.status(200).json(users);

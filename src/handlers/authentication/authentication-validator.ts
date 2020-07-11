@@ -1,7 +1,7 @@
 import { BlueChipValidators, InvalidDataTypeError } from "bluechip-utils";
-import { PasswordCreationRequest } from "bluechip-b54";
+import { PasswordCreationRequest } from "hotel-lib";
 import { generateToken } from "../../utilities/helpers/authentication";
-import { LoginRequest, AccountType, AuthenticationProfile } from "bluechip-b54";
+import { LoginRequest, AccountType, AuthenticationProfile } from "hotel-lib";
 
 export const validateUserLoginRequest = (request: any): LoginRequest => {
   BlueChipValidators.validateRequiredStringProperty("Email address", request.emailAddress);

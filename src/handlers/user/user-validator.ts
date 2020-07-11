@@ -1,5 +1,5 @@
 import { BlueChipValidators } from "bluechip-utils";
-import { User } from "bluechip-b54";
+import { User } from "hotel-lib";
 import { generateToken } from "../../utilities/helpers/authentication";
 import { validateAccountType } from "../authentication/authentication-validator";
 

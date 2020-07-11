@@ -10,7 +10,7 @@ export const login = async (req: Request, res: Response) => {
 
     logger.info(`Login attempt: ${request.body.emailAddress}`);
 
-    let response = await systemPerformsUserLogin(request);
+    let response = await systemPerformsUserLogin(request.body);
 
     logger.info(`Login success: ${request.body.emailAddress}`);
     res.status(response?.statusCode).json(response.data);

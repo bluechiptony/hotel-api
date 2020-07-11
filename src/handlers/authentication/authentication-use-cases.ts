@@ -1,12 +1,12 @@
 import { generateToken } from "../../utilities/helpers/authentication";
-import { LoginRequest, AuthenticationProfile, PasswordCreationRequest } from "bluechip-b54";
+import { LoginRequest, AuthenticationProfile, PasswordCreationRequest } from "hotel-lib";
 
 import { validateUserLoginRequest, validateAccountRequest, validatePasswordChangeRequest } from "./authentication-validator";
 import { makeHttpErrorFromException, AppResponse } from "bluechip-utils/lib/responses/responses";
 import { getAuthenticationProfileViaEmail, checkIfTokenIsValidForUserEmail, checkIfAuthenticationProfileExists, getAccountTypes, createAuthenticationProfile, updateProfileForPasswordRequest, checkIfTokenIsValid, updateAuthProfilePassword } from "./authentication-data-access";
 import { comparePassword, createAuthTokenForUser, generateHashforPasswordText } from "../../utilities/helpers/authentication";
 import { getSingleUser } from "../user/user-data-access";
-import { User } from "bluechip-b54";
+import { User } from "hotel-lib";
 import { terminalLogger as logger } from "../../utilities/helpers/logger";
 // import { sendAccountActivationMessage, sendPasswordRecoveyMessage } from "../../utilities/messaging/messaging";
 

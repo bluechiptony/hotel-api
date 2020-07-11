@@ -1,6 +1,6 @@
 import { createUser, checkIfUSerExists, getUsers, getUsersAndAccounts } from "./user-data-access";
 
-import { User } from "bluechip-b54";
+import { User } from "hotel-lib";
 import { validateNewUser } from "./user-validator";
 import logger from "../../utilities/helpers/logger";
 

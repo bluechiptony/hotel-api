@@ -1,9 +1,9 @@
 import * as knex from "knex";
-import { User } from "bluechip-b54";
+import { User } from "hotel-lib";
 import { Connection } from "../../config/database";
 import { DatabaseError, BluechipHelpers } from "bluechip-utils";
 import logger from "../../utilities/helpers/logger";
-import { AccountType, AuthenticationProfile } from "bluechip-b54";
+import { AccountType, AuthenticationProfile } from "hotel-lib";
 
 const userTable: string = "users";
 const authenticationTable: string = "authentication";

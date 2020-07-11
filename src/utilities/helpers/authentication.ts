@@ -1,6 +1,6 @@
 // import { AuthenticatedUser, UserToken } from "../../handlers/authentication/authentication.model";
 import * as bcrypt from "bcrypt";
-import { User } from "bluechip-b54";
+import { User } from "hotel-lib";
 import * as jsonwebtoken from "jsonwebtoken";
 
 import nanoid from "nanoid";
@@ -41,6 +41,15 @@ export const createAuthTokenForUser = async (user: User): Promise<string> => {
   const authKey: any = process.env.AUTH_SK;
   try {
     return jsonwebtoken.sign(user, authKey);
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+export const getUserFromToken = async (token: string): Promise<any> => {
+  const authKey: any = process.env.AUTH_SK;
+  try {
+    return jsonwebtoken.verify(token, authKey);
   } catch (error) {
     throw new Error(error);
   }

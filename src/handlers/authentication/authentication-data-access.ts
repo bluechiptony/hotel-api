@@ -2,7 +2,7 @@ import * as knex from "knex";
 import { Connection } from "../../config/database";
 import { DatabaseError } from "bluechip-utils";
 import { BluechipHelpers } from "bluechip-utils";
-import { AuthenticationProfile } from "bluechip-b54";
+import { AuthenticationProfile } from "hotel-lib";
 import logger from "../../utilities/helpers/logger";
 
 const connector: knex = new Connection().knex();
