@@ -59,7 +59,7 @@ export const updateAuthenticationProfile = async (authProfile: AuthenticationPro
 
 export const updateProfileForPasswordRequest = async (emailAddress: string, token: string) => {
   try {
-    let result = connector
+    let result = await connector
       .table(authTable)
       .update({
         activation_token: token,
@@ -69,7 +69,7 @@ export const updateProfileForPasswordRequest = async (emailAddress: string, toke
       .where({ email_address: emailAddress })
       .returning("email_address");
 
-    return result;
+    return result[0];
   } catch (error) {
     logger.error(error.message);
     throw new DatabaseError("Internal connection error");

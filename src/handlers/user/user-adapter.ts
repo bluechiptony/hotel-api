@@ -11,7 +11,6 @@ export const createUser = async (req: Request, res: Response) => {
     let request = BluechipHelpers.adaptExpressRequest(req);
     let userCode: string = await systemOrUserCreatesUser(request.body, request.user);
     res.status(201).json({ userCode: userCode });
-    // res.status(response?.statusCode).json(response.data);
   } catch (error) {
     logger.error(error.message);
     let messageText = error.message || "Sorry: Unable to process request";

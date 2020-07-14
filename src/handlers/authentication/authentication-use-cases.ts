@@ -8,6 +8,7 @@ import { comparePassword, createAuthTokenForUser, generateHashforPasswordText } 
 import { getSingleUser } from "../user/user-data-access";
 import { User } from "hotel-lib";
 import { terminalLogger as logger } from "../../utilities/helpers/logger";
+import { sendAccountActivationMessage, sendPasswordRecoveyMessage } from "../../utilities/messaging/messaging";
 // import { sendAccountActivationMessage, sendPasswordRecoveyMessage } from "../../utilities/messaging/messaging";
 
 export const systemPerformsUserLogin = async (request: any): Promise<AppResponse> => {
@@ -33,6 +34,8 @@ export const systemPerformsUserLogin = async (request: any): Promise<AppResponse
 
 export const userCreatesAuthenticationProfile = async (request: any): Promise<string> => {
   try {
+    console.log(request);
+
     let authProfile: AuthenticationProfile = await validateAccountRequest(request);
 
     if (await checkIfAuthenticationProfileExists(authProfile.emailAddress)) {
@@ -41,9 +44,9 @@ export const userCreatesAuthenticationProfile = async (request: any): Promise<st
 
     let saveResult = await createAuthenticationProfile(authProfile);
 
-    // if (authProfile.verificationCode != undefined) {
-    //   sendAccountActivationMessage(authProfile.emailAddress, authProfile.activationToken, true);
-    // }
+    if (authProfile.activationToken != undefined) {
+      sendAccountActivationMessage(authProfile.emailAddress, authProfile.activationToken, true);
+    }
 
     return authProfile.userCode;
   } catch (error) {
@@ -61,14 +64,13 @@ export const userMakesForgotPasswordRequest = async (request: any) => {
     if (!(await checkIfAuthenticationProfileExists(request.body.emailAddress))) {
       throw new Error("Email address doesn not exist on our system");
     }
-
     let token: string = generateToken(256);
 
     let result = await updateProfileForPasswordRequest(request.body.emailAddress, token);
-    // console.log(result);
-    // if (result != undefined) {
-    //   sendPasswordRecoveyMessage(request.body.emailAddress, token, true);
-    // }
+
+    if (result != undefined) {
+      sendPasswordRecoveyMessage(request.body.emailAddress, token, true);
+    }
     return `Password recovery email sent to ${request.body.emailAddress}`;
   } catch (error) {
     logger.error(error.message);
@@ -78,7 +80,7 @@ export const userMakesForgotPasswordRequest = async (request: any) => {
 
 export const userSetsPassword = async (request: any) => {
   try {
-    let passwordRequest: PasswordCreationRequest = await validatePasswordChangeRequest(request.body);
+    let passwordRequest: PasswordCreationRequest = await validatePasswordChangeRequest(request);
 
     if (!(await checkIfTokenIsValid(passwordRequest.token))) {
       throw new Error("Unfortunately request token is expired");

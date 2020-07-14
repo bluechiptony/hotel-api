@@ -5,6 +5,6 @@ import { valiedateForUser, validateForAdmininstrator } from "../authorization/au
 const UserRoutes = Router();
 
 UserRoutes.get("/get", valiedateForUser, validateForAdmininstrator, getUsers);
-UserRoutes.post("/create", createUser);
+UserRoutes.post("/create", validateForAdmininstrator, createUser);
 
 export default UserRoutes;

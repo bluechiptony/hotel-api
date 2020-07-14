@@ -1,13 +1,13 @@
-/node_modules 
-.env 
-.DS_Store 
+/node_modules
+.env
+.DS_Store
 /dist
 dist
-node_modules/ 
-jspm_packages/ 
+node_modules/
+jspm_packages/
 node_modules
 logs
 /logs
 
 # TypeScript v1 declaration files
-typings/ 
+typings/

@@ -38,9 +38,12 @@ export const getAccountTypes = async (req: Request, res: Response) => {
 export const getLoggedInUser = async (req: Request, res: Response) => {};
 
 export const activateAccount = async (req: Request, res: Response) => {
+  console.log("In activate account");
   try {
     let request = BluechipHelpers.adaptExpressRequest(req);
-    let response = await userSetsPassword(request);
+    console.log(request.body);
+
+    let response = await userSetsPassword(request.body);
     res.status(202).json(response);
   } catch (error) {
     logger.error(error.message);
@@ -81,7 +84,7 @@ export const recoverAccount = async (req: Request, res: Response) => {
 export const createAuthenticationProfile = async (req: Request, res: Response) => {
   try {
     let request = BluechipHelpers.adaptExpressRequest(req);
-    let response = await userCreatesAuthenticationProfile(request);
+    let response = await userCreatesAuthenticationProfile(request.body);
     res.status(201).json({ message: "Profile successfully created", userCode: response });
   } catch (error) {
     logger.error(error.message);

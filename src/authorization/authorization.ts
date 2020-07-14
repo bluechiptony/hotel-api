@@ -13,7 +13,7 @@ export const validateForAdmininstrator = async (req: Request, res: Response, nex
         res.status(403).json("You are not authorized to access this resource");
       }
     } else {
-      res.status(401).json("Invalid authentication");
+      res.status(401).json("Yoi're not able to access B-54: Please contact your administrator");
     }
   } catch (error) {
     res.status(401).json("Invalid authentication");
@@ -29,7 +29,7 @@ export const valiedateForUser = async (req: Request, res: Response, next: NextFu
         next();
       }
     } else {
-      res.status(401).json("Invalid authentication");
+      res.status(401).json("Yoi're not able to access B-54: Please contact your administrator");
     }
   } catch (error) {
     res.status(401).json("Invalid authentication");
