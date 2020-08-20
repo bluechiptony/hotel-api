@@ -21,7 +21,7 @@
   "dependencies": {
     "@types/mailgun-js": "^0.22.9",
     "axios": "^0.19.2",
-    "bcrypt": "^4.0.1",
+    "bcrypt": "^5.0.0",
     "bluechip-utils": "^1.0.7",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
